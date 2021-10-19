@@ -10,9 +10,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTC-ShopSolution.Data", "TTC-ShopSolution.Data\TTC-ShopSolution.Data.csproj", "{C15AEC0E-1F05-4629-848C-F030DFDB5D54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TTC-ShopSolution.Data", "TTC-ShopSolution.Data\TTC-ShopSolution.Data.csproj", "{C15AEC0E-1F05-4629-848C-F030DFDB5D54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTC-ShopSolution.Application", "TTC-ShopSolution.Application\TTC-ShopSolution.Application.csproj", "{C2FAB361-A160-4FE2-8690-DAF1ABB955F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TTC-ShopSolution.Application", "TTC-ShopSolution.Application\TTC-ShopSolution.Application.csproj", "{C2FAB361-A160-4FE2-8690-DAF1ABB955F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopSolution.Utilities", "eShopSolution.Utilities\eShopSolution.Utilities.csproj", "{B9E82C1B-4C0D-4F5F-842B-52807697F5E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{C2FAB361-A160-4FE2-8690-DAF1ABB955F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2FAB361-A160-4FE2-8690-DAF1ABB955F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2FAB361-A160-4FE2-8690-DAF1ABB955F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9E82C1B-4C0D-4F5F-842B-52807697F5E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9E82C1B-4C0D-4F5F-842B-52807697F5E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9E82C1B-4C0D-4F5F-842B-52807697F5E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9E82C1B-4C0D-4F5F-842B-52807697F5E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
