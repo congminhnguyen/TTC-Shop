@@ -5,4 +5,9 @@
     <RootNamespace>TTC_ShopSolution.Application</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\eShopSolution.Utilities\eShopSolution.Utilities.csproj" />
+    <ProjectReference Include="..\TTC-ShopSolution.Data\TTC-ShopSolution.Data.csproj" />
+  </ItemGroup>
+
 </Project>

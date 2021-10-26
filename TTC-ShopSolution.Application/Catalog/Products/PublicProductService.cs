@@ -4,7 +4,8 @@ using System.Text;
 
 namespace TTC_ShopSolution.Application.Catalog.Products
 {
-    class PublicProductService
+    public class PublicProductService
     {
+        public int CategoryId { get; set; }
     }
 }

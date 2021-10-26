@@ -314,7 +314,7 @@ namespace TTC_ShopSolution.Data.Migrations
                     b.Property<DateTime>("OrderDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2021, 10, 19, 17, 15, 11, 626, DateTimeKind.Local).AddTicks(1810));
+                        .HasDefaultValue(new DateTime(2021, 10, 20, 4, 10, 56, 1, DateTimeKind.Local).AddTicks(8954));
 
                     b.Property<string>("ShipAddress")
                         .IsRequired()
@@ -383,6 +383,19 @@ namespace TTC_ShopSolution.Data.Migrations
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
+
+                    b.Property<string>("Details")
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
+
                     b.Property<decimal>("OriginalPrice")
                         .HasColumnType("decimal(18,2)");
 
@@ -390,7 +403,9 @@ namespace TTC_ShopSolution.Data.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("SeoAlias")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<int>("Stock")
                         .ValueGeneratedOnAdd()
