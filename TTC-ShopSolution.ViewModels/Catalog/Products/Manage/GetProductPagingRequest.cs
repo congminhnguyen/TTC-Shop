@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TTC_ShopSolution.Application.Dtos;
+using TTC_ShopSolution.ViewModels.Catalog.Common;
 
-namespace TTC_ShopSolution.Application.Catalog.Products.Dtos.Manage
+namespace TTC_ShopSolution.ViewModels.Catalog.Products.Manage
 {
     public class GetProductPagingRequest : PagingRequestBase
     {

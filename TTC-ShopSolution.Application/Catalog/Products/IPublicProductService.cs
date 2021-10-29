@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TTC_ShopSolution.Application.Catalog.Products.Dtos.Public;
-using TTC_ShopSolution.Application.Dtos;
+﻿using System.Threading.Tasks;
+using TTC_ShopSolution.ViewModels.Catalog.Common;
+using TTC_ShopSolution.ViewModels.Catalog.Products;
+using TTC_ShopSolution.ViewModels.Catalog.Products.Public;
 
 namespace TTC_ShopSolution.Application.Catalog.Products.Dtos
 {
     public interface IPublicProductService
     {
-        public PagedResult<ProductViewModel> GetAllByCategoryId(GetProductPagingRequest request);
+        Task<PagedResult<ProductViewModel>> GetAllByCategoryId(GetProductPagingRequest request);
     }
 }
