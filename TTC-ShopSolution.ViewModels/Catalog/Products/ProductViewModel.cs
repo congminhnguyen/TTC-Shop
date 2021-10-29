@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TTC_ShopSolution.Application.Catalog.Products.Dtos
+namespace TTC_ShopSolution.ViewModels.Catalog.Products
 {
     public class ProductViewModel
     {

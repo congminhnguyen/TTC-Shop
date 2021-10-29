@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TTC_ShopSolution.Application.Catalog.Products.Dtos.Manage
+namespace TTC_ShopSolution.ViewModels.Catalog.Products.Manage
 {
     public class ProductUpdateRequest
     {
@@ -12,5 +13,9 @@ namespace TTC_ShopSolution.Application.Catalog.Products.Dtos.Manage
         public string Details { set; get; }
 
         public string SeoAlias { set; get; }
+        public IFormFile ThumbnailImage { set; get; }
+
+        // bỏ SeoDescription
+        // bỏ SeoTitle
     }
 }
