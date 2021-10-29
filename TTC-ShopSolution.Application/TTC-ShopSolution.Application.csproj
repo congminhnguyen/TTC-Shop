@@ -1,8 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>TTC_ShopSolution.Application</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\eShopSolution.Utilities\eShopSolution.Utilities.csproj" />
+    <ProjectReference Include="..\TTC-ShopSolution.Data\TTC-ShopSolution.Data.csproj" />
+    <ProjectReference Include="..\TTC-ShopSolution.ViewModels\TTC-ShopSolution.ViewModels.csproj" />
+  </ItemGroup>
 
 </Project>
