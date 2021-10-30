@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using TTC_ShopSolution.ViewModels.Catalog.Common;
 using TTC_ShopSolution.ViewModels.Catalog.Products;
-using TTC_ShopSolution.ViewModels.Catalog.Products.Public;
 
 namespace TTC_ShopSolution.Application.Catalog.Products
 {
@@ -19,7 +18,32 @@ namespace TTC_ShopSolution.Application.Catalog.Products
         {
             _context = context;
         }
-        public async Task<PagedResult<ProductViewModel>> GetAllByCategoryId(GetProductPagingRequest request)
+
+        public async Task<List<ProductViewModel>> GetAll()
+        {
+            var query = from p in _context.Products
+                            // không làm productTranSlations
+                        join pic in _context.ProductInCategories on p.Id equals pic.ProductId
+                        join c in _context.Categories on pic.CategoryId equals c.Id
+                        select new { p, pic };
+
+            var data = await query.Select(x => new ProductViewModel()
+                {
+                    Id = x.p.Id,
+                    Name = x.p.Name,
+                    DateCreated = x.p.DateCreated,
+                    Description = x.p.Description,
+                    Details = x.p.Details,
+                    OriginalPrice = x.p.OriginalPrice,
+                    Price = x.p.Price,
+                    SeoAlias = x.p.SeoAlias,
+                    Stock = x.p.Stock,
+                    ViewCount = x.p.ViewCount
+                }).ToListAsync();
+            return data;
+        }
+
+        public async Task<PagedResult<ProductViewModel>> GetAllByCategoryId(GetPublicProductPagingRequest request)
         {
             //1. Select join
             var query = from p in _context.Products
