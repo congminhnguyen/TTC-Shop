@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TTC_ShopSolution.ViewModels.Catalog.Products.Manage
+namespace TTC_ShopSolution.ViewModels.Catalog.Products
 {
     public class ProductUpdateRequest
     {

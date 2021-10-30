@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using TTC_ShopSolution.ViewModels.Catalog.Common;
 using TTC_ShopSolution.ViewModels.Catalog.Products;
-using TTC_ShopSolution.ViewModels.Catalog.Products.Manage;
 
 namespace TTC_ShopSolution.Application.Catalog.Products
 {
@@ -20,7 +19,7 @@ namespace TTC_ShopSolution.Application.Catalog.Products
         /*Task<List<ProductViewModel>> GetAll();*/
 
         // GetAllPaging lấy "PageIndex" + "PageSize" theo "Keyword" + "CategoryIds"
-        Task<PagedResult<ProductViewModel>> GetAllPaging(GetProductPagingRequest request);
+        Task<PagedResult<ProductViewModel>> GetAllPaging(GetManageProductPagingRequest request);
         // sau khi thêm product, có thễ thêm/sửa/xóa riêng ảnh
         Task<int> AddImages(int productId, List<IFormFile> files);
         Task<int> RemoveImages(int imageId);

@@ -16,7 +16,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TTC-ShopSolution.Applicatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopSolution.Utilities", "eShopSolution.Utilities\eShopSolution.Utilities.csproj", "{B9E82C1B-4C0D-4F5F-842B-52807697F5E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTC-ShopSolution.ViewModels", "TTC-ShopSolution.ViewModels\TTC-ShopSolution.ViewModels.csproj", "{393489FC-AF50-48C4-9D78-243B21BBAC4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TTC-ShopSolution.ViewModels", "TTC-ShopSolution.ViewModels\TTC-ShopSolution.ViewModels.csproj", "{393489FC-AF50-48C4-9D78-243B21BBAC4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTC-ShopSolution.BackendApi", "TTC-ShopSolution.BackendApi\TTC-ShopSolution.BackendApi.csproj", "{C511F3D4-3A86-4A86-98BB-47CFF2AAC15A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{393489FC-AF50-48C4-9D78-243B21BBAC4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{393489FC-AF50-48C4-9D78-243B21BBAC4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{393489FC-AF50-48C4-9D78-243B21BBAC4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C511F3D4-3A86-4A86-98BB-47CFF2AAC15A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C511F3D4-3A86-4A86-98BB-47CFF2AAC15A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C511F3D4-3A86-4A86-98BB-47CFF2AAC15A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C511F3D4-3A86-4A86-98BB-47CFF2AAC15A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

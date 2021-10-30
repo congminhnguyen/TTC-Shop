@@ -7,7 +7,6 @@ using TTC_ShopSolution.Data.EF;
 using TTC_ShopSolution.Data.Entities;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using TTC_ShopSolution.ViewModels.Catalog.Products.Manage;
 using TTC_ShopSolution.ViewModels.Catalog.Products;
 using TTC_ShopSolution.ViewModels.Catalog.Common;
 using Microsoft.AspNetCore.Http;
@@ -100,7 +99,7 @@ namespace TTC_ShopSolution.Application.Catalog.Products
             throw new NotImplementedException();
         }
 
-        public async Task<PagedResult<ProductViewModel>> GetAllPaging(GetProductPagingRequest request)
+        public async Task<PagedResult<ProductViewModel>> GetAllPaging(GetManageProductPagingRequest request)
         {
             //1. Select join
             var query = from p in _context.Products
