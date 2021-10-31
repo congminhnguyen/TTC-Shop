@@ -28,8 +28,10 @@ namespace TTC_ShopSolution.Application.Catalog.Products
         }
 
         /*----------------------------------- phần Add -----------------------------------*/
-        public Task<int> AddImages(int productId, List<IFormFile> files)
+        public async Task<int> AddImages(int productId, List<IFormFile> files)
         {
+            //var product = await _context.Products.FindAsync(productId);
+            //return product;
             throw new NotImplementedException();
         }
 
@@ -71,7 +73,8 @@ namespace TTC_ShopSolution.Application.Catalog.Products
                 };
             }
             _context.Products.Add(product);
-            return await _context.SaveChangesAsync();
+             await _context.SaveChangesAsync();
+            return product.Id;
         }
 
         /*----------------------------------- phần Delete -----------------------------------*/
@@ -151,6 +154,29 @@ namespace TTC_ShopSolution.Application.Catalog.Products
             return pagedResult;
         }
 
+        public async Task<ProductViewModel> GetById(int productId)
+        {
+            var product = await _context.Products.FindAsync(productId);
+            //var productTranslation = await _context.ProductTranslations.FirstOrDefaultAsync(x => x.ProductId == productId
+            //&& x.LanguageId == languageId);
+
+            var productViewModel = new ProductViewModel()
+            {
+                Id = product.Id,
+                DateCreated = product.DateCreated,
+                Description = product.Description,
+           
+                Details = product.Details,
+                Name = product.Name,
+                OriginalPrice = product.OriginalPrice,
+                Price = product.Price,
+                SeoAlias = product.SeoAlias,
+                Stock = product.Stock,
+                ViewCount = product.ViewCount
+            };
+            return productViewModel;
+        }
+
         public Task<List<ProductImageViewModel>> GetListImage(int productId)
         {
             throw new NotImplementedException();
@@ -169,9 +195,6 @@ namespace TTC_ShopSolution.Application.Catalog.Products
             // không làm productTranSlations
             if (product == null) throw new EShopException($"Cannot find a product with id: {request.Id}");
 
-        // không làm productTranSlations
-        // không làm productTranSlations
-        // không làm productTranSlations
         // không làm productTranSlations
 
         // Save image
