@@ -8,12 +8,14 @@ using TTC_ShopSolution.Application.Catalog.Products;
 using TTC_ShopSolution.Application.Catalog.Products.Dtos;
 using TTC_ShopSolution.ViewModels.Catalog.Products; 
 using TTC_ShopSolution.ViewModels.Catalog.ProductImages;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TTC_ShopSolution.BackendApi.Controllers
 {
     //api/prodcuts
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProductsController : ControllerBase
     {
         private readonly IPublicProductService _publicProductService;

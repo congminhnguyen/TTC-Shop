@@ -35,3 +35,6 @@
 * Tạo Web API Project (Create Web API Project)
 * Thêm Swagger cho Web API (Add Swagger to Web API)
 * Tạo RESTful API cho Product (Create RESTful API for Product)
+* API Quản lý ảnh (Image management API)
+* Tạo API đăng nhập và đăng ký (Create login and register APIs)
+* Thêm Authorization header cho Swagger (Add Authorization to Swagger)

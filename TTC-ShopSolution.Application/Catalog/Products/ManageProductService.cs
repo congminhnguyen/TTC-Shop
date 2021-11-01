@@ -62,9 +62,10 @@ namespace TTC_ShopSolution.Application.Catalog.Products
         {
             var product = new Product()
             {
-                Price = request.Price,
-                OriginalPrice = request.OriginalPrice,
-                Stock = request.Stock,
+                Name = request.Name,
+                Price = (decimal) request.Price,
+                OriginalPrice = (decimal)request.OriginalPrice,
+                Stock = (int)request.Stock,
                 ViewCount = 0,
                 DateCreated = DateTime.Now,
                 SeoAlias = request.SeoAlias
@@ -147,14 +148,14 @@ namespace TTC_ShopSolution.Application.Catalog.Products
                 {
                     Id = x.p.Id,
                     Name = x.p.Name,
-                    DateCreated = x.p.DateCreated,
+                    DateCreated = (DateTime)x.p.DateCreated,
                     Description = x.p.Description,
                     Details = x.p.Details,
-                    OriginalPrice = x.p.OriginalPrice,
-                    Price = x.p.Price,
+                    OriginalPrice = (decimal)x.p.OriginalPrice,
+                    Price = (decimal)x.p.Price,
                     SeoAlias = x.p.SeoAlias,
-                    Stock = x.p.Stock,
-                    ViewCount = x.p.ViewCount
+                    Stock = (int)x.p.Stock,
+                    ViewCount = (int)x.p.ViewCount
                 }).ToListAsync();
 
 
@@ -178,15 +179,15 @@ namespace TTC_ShopSolution.Application.Catalog.Products
             var productViewModel = new ProductViewModel()
             {
                 Id = product.Id,
-                DateCreated = product.DateCreated,
+                DateCreated = (DateTime)product.DateCreated,
                 Description = product.Description,
                 Details = product.Details,
                 Name = product.Name,
-                OriginalPrice = product.OriginalPrice,
-                Price = product.Price,
+                OriginalPrice = (decimal)product.OriginalPrice,
+                Price = (decimal)product.Price,
                 SeoAlias = product.SeoAlias,
-                Stock = product.Stock,
-                ViewCount = product.ViewCount
+                Stock = (int)product.Stock,
+                ViewCount = (int)product.ViewCount
             };
             return productViewModel;
         }
