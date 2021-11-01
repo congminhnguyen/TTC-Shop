@@ -9,6 +9,5 @@ namespace TTC_ShopSolution.Application.Catalog.Products.Dtos
     {
         Task<PagedResult<ProductViewModel>> GetAllByCategoryId(GetPublicProductPagingRequest request);
 
-        Task<List<ProductViewModel>> GetAll();
     }
 }

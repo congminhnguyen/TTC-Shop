@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Http;
 using System.Net.Http.Headers;
 using System.IO;
 using TTC_ShopSolution.Application.Common;
+using TTC_ShopSolution.ViewModels.Catalog.ProductImages;
 
 namespace TTC_ShopSolution.Application.Catalog.Products
 {
@@ -28,11 +29,25 @@ namespace TTC_ShopSolution.Application.Catalog.Products
         }
 
         /*----------------------------------- phần Add -----------------------------------*/
-        public async Task<int> AddImages(int productId, List<IFormFile> files)
+        public async Task<int> AddImage(int productId, ProductImageCreateRequest request)
         {
-            //var product = await _context.Products.FindAsync(productId);
-            //return product;
-            throw new NotImplementedException();
+            var productImage = new ProductImage()
+            {
+                Caption = request.Caption,
+                DateCreated = DateTime.Now,
+                IsDefault = request.IsDefault,
+                ProductId = productId,
+                SortOrder = request.SortOrder
+            };
+            // Save image
+            if (request.ImageFile != null)
+            {
+                productImage.ImagePath = await this.SaveFile(request.ImageFile);
+                productImage.FileSize = request.ImageFile.Length;
+            }
+            _context.ProductImages.Add(productImage);
+             await _context.SaveChangesAsync();
+            return productImage.Id;
         }
 
         public async Task AddViewCount(int productId)
@@ -165,7 +180,6 @@ namespace TTC_ShopSolution.Application.Catalog.Products
                 Id = product.Id,
                 DateCreated = product.DateCreated,
                 Description = product.Description,
-           
                 Details = product.Details,
                 Name = product.Name,
                 OriginalPrice = product.OriginalPrice,
@@ -177,15 +191,48 @@ namespace TTC_ShopSolution.Application.Catalog.Products
             return productViewModel;
         }
 
-        public Task<List<ProductImageViewModel>> GetListImage(int productId)
+        public async Task<ProductImageViewModel> GetImageById(int imageId)
         {
-            throw new NotImplementedException();
+            var image = await _context.ProductImages.FindAsync(imageId);
+            if (image == null)
+            {
+                throw new EShopException($"Cannot find a Image with id: {imageId}");
+            }
+            var viewModel = new ProductImageViewModel()
+            {
+                Caption = image.Caption,
+                DateCreated = image.DateCreated,
+                FileSize = image.FileSize,
+                Id = image.Id,
+                ImagePath = image.ImagePath,
+                IsDefault = image.IsDefault,
+                ProductId = image.ProductId
+            };
+            return viewModel;
+        }
+
+        public async Task<List<ProductImageViewModel>> GetListImage(int productId)
+        {
+            return await _context.ProductImages.Where(x => x.ProductId == productId).Select(i => new ProductImageViewModel()
+            {
+                Caption = i.Caption,
+                DateCreated = i.DateCreated,
+                FileSize = i.FileSize,
+                Id = i.Id,
+                ImagePath = i.ImagePath,
+                IsDefault = i.IsDefault,
+                ProductId = i.ProductId
+            }).ToListAsync();
         }
 
         /*----------------------------------- phần Remove -----------------------------------*/
-        public Task<int> RemoveImages(int imageId)
+        public async Task<int> RemoveImage(int imageId)
         {
-            throw new NotImplementedException();
+            var productImage = await _context.ProductImages.FindAsync(imageId);
+            if (productImage == null)
+                throw new EShopException($"Cannot find a product with id: {imageId}");
+            _context.ProductImages.Remove(productImage);
+            return await _context.SaveChangesAsync();
         }
 
         /*----------------------------------- phần Update -----------------------------------*/
@@ -193,7 +240,8 @@ namespace TTC_ShopSolution.Application.Catalog.Products
         {
             var product = await _context.Products.FindAsync(request.Id);
             // không làm productTranSlations
-            if (product == null) throw new EShopException($"Cannot find a product with id: {request.Id}");
+            if (product == null) 
+                throw new EShopException($"Cannot find a product with id: {request.Id}");
 
         // không làm productTranSlations
 
@@ -211,9 +259,21 @@ namespace TTC_ShopSolution.Application.Catalog.Products
             return await _context.SaveChangesAsync();
         }
 
-        public Task<int> UpdateImages(int imageId, string caption, bool isDefault)
+        public async Task<int> UpdateImage(int imageId, ProductImageUpdateRequest request)
         {
-            throw new NotImplementedException();
+            var productImage = await _context.ProductImages.FindAsync(imageId);
+            if (productImage == null)
+            {
+                throw new EShopException($"Cannot find an image with id {imageId}");
+            };
+            // Save image
+            if (request.ImageFile != null)
+            {
+                productImage.ImagePath = await this.SaveFile(request.ImageFile);
+                productImage.FileSize = request.ImageFile.Length;
+            }
+            _context.ProductImages.Update(productImage);
+            return await _context.SaveChangesAsync();
         }
 
         public async Task<bool> UpdatePrice(int productId, decimal newPrice)
