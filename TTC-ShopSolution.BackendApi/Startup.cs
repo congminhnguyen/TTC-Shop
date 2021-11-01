@@ -2,6 +2,7 @@ using eShopSolution.Utilities.Constants;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,7 +15,9 @@ using System.Threading.Tasks;
 using TTC_ShopSolution.Application.Catalog.Products;
 using TTC_ShopSolution.Application.Catalog.Products.Dtos;
 using TTC_ShopSolution.Application.Common;
+using TTC_ShopSolution.Application.System.Users;
 using TTC_ShopSolution.Data.EF;
+using TTC_ShopSolution.Data.Entities;
 
 namespace TTC_ShopSolution.BackendApi
 {
@@ -32,10 +35,18 @@ namespace TTC_ShopSolution.BackendApi
         {
             services.AddDbContext<TTC_ShopDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString(SystemConstant.MainConnectionString)));
+            services.AddIdentity<AppUser, AppRole>()
+                .AddEntityFrameworkStores<TTC_ShopDBContext>()
+                .AddDefaultTokenProviders();
             //declare DI
             services.AddTransient<IStorageService, FileStorageService>();
             services.AddTransient<IPublicProductService, PublicProductService>();
             services.AddTransient<IManageProductService, ManageProductService>();
+            services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
+            services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
+            services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
+            services.AddTransient<IUserService, UserService>();
+
             services.AddControllersWithViews();
 
             services.AddSwaggerGen(c =>
