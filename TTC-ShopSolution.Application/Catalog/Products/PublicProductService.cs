@@ -46,14 +46,14 @@ namespace TTC_ShopSolution.Application.Catalog.Products
                 {
                     Id = x.p.Id,
                     Name = x.p.Name,
-                    DateCreated = x.p.DateCreated,
+                    DateCreated = (DateTime)x.p.DateCreated,
                     Description = x.p.Description,
                     Details = x.p.Details,
-                    OriginalPrice = x.p.OriginalPrice,
-                    Price = x.p.Price,
+                    OriginalPrice = (decimal)x.p.OriginalPrice,
+                    Price = (decimal)x.p.Price,
                     SeoAlias = x.p.SeoAlias,
-                    Stock = x.p.Stock,
-                    ViewCount = x.p.ViewCount
+                    Stock = (int)x.p.Stock,
+                    ViewCount = (int)x.p.ViewCount
                 }).ToListAsync();
 
 
