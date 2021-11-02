@@ -43,3 +43,4 @@
 * Tạo API đăng nhập và đăng ký (Create login and register APIs)
 * Thêm Authorization header cho Swagger (Add Authorization to Swagger)
 * Sử dụng Fluent Validation
+* Tạo ứng dụng Admin và thêm Template (Create Admin App and add Template)
