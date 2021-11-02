@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using TTC_ShopSolution.ViewModels.Catalog.Common;
 using TTC_ShopSolution.ViewModels.Catalog.Products;
-using TTC_ShopSolution.ViewModels.Catalog.Products.Public;
 
 namespace TTC_ShopSolution.Application.Catalog.Products
 {
@@ -19,7 +18,8 @@ namespace TTC_ShopSolution.Application.Catalog.Products
         {
             _context = context;
         }
-        public async Task<PagedResult<ProductViewModel>> GetAllByCategoryId(GetProductPagingRequest request)
+
+        public async Task<PagedResult<ProductViewModel>> GetAllByCategoryId(GetPublicProductPagingRequest request)
         {
             //1. Select join
             var query = from p in _context.Products
@@ -46,14 +46,14 @@ namespace TTC_ShopSolution.Application.Catalog.Products
                 {
                     Id = x.p.Id,
                     Name = x.p.Name,
-                    DateCreated = x.p.DateCreated,
+                    DateCreated = (DateTime)x.p.DateCreated,
                     Description = x.p.Description,
                     Details = x.p.Details,
-                    OriginalPrice = x.p.OriginalPrice,
-                    Price = x.p.Price,
+                    OriginalPrice = (decimal)x.p.OriginalPrice,
+                    Price = (decimal)x.p.Price,
                     SeoAlias = x.p.SeoAlias,
-                    Stock = x.p.Stock,
-                    ViewCount = x.p.ViewCount
+                    Stock = (int)x.p.Stock,
+                    ViewCount = (int)x.p.ViewCount
                 }).ToListAsync();
 
 
