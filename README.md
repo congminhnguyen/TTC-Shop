@@ -12,7 +12,7 @@
 ### Mô hình
 * N layer (Data, Business, Presentation): Data driven design
 * Code first sử dụng Entity
-### Install NuGet Packages
+### Install NuGet Packages to TTC-ShopSolution.Data
 * Microsoft.EntityFrameworkCore v3.1.18
 * Microsoft.EntityFrameworkCore.SqlServer v3.1.18
 * Microsoft.EntityFrameworkCore.Design v3.1.18
@@ -20,6 +20,10 @@
 * Microsoft.Extensions.Configuration.FileExtensions v3.1.18
 * Microsoft.Extensions.Configuration.Json v3.1.18
 * Microsoft.AspNetCore.Identity.EntityFrameworkCore v3.1.18
+### Install NuGet Packages to TTC-ShopSolution.BackendApi
+* FluentValidation.AspNetCore v8.6.2
+### Install NuGet Packages to TTC-ShopSolution.ViewModels
+* FluentValidation.AspNetCore v8.6.2
 ### Note
 * Thiết kế database
 * Tạo các Entity Class
@@ -38,3 +42,4 @@
 * API Quản lý ảnh (Image management API)
 * Tạo API đăng nhập và đăng ký (Create login and register APIs)
 * Thêm Authorization header cho Swagger (Add Authorization to Swagger)
+* Sử dụng Fluent Validation
