@@ -9,7 +9,7 @@ using TTC_ShopSolution.ViewModels.Catalog.Products;
 
 namespace TTC_ShopSolution.Application.Catalog.Products
 {
-    public interface IManageProductService
+    public interface IProductService
     {
         Task<int> Create(ProductCreateRequest request);
         Task<int> Update(ProductUpdateRequest request);
@@ -28,6 +28,9 @@ namespace TTC_ShopSolution.Application.Catalog.Products
         Task<int> UpdateImage(int imageId, ProductImageUpdateRequest request);
         Task<ProductImageViewModel> GetImageById(int imageId);
         Task<List<ProductImageViewModel>> GetListImage(int productId);
+
+        Task<PagedResult<ProductViewModel>> GetAllByCategoryId(GetPublicProductPagingRequest request);
+
 
     }
 }
