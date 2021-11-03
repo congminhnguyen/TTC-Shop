@@ -8,5 +8,6 @@ namespace TTC_ShopSolution.ViewModels.Catalog.Common
     {
         public List<T> Items { get; set; }
         public int TotalRecord { get; set; }
+        public int TotalRecords { get; set; }
     }
 }
