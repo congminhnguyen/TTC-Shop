@@ -42,23 +42,35 @@ namespace TTC_ShopSolution.AdminApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(RegisterRequest request)
+        public async Task<IActionResult> Login(LoginRequest request)
         {
             if (!ModelState.IsValid)
-                return View();
-            var result = await _userApiClient.RegisterUser(request);
-            if (result)
-                return RedirectToAction("Index");
-            return View();
-        }
+                return View(ModelState);
 
-        
+            var token = await _userApiClient.Authenticate(request);
+
+            var userPrincipal = this.ValidateToken(token);
+            var authProperties = new AuthenticationProperties
+            {
+                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
+                IsPersistent = true
+            };
+
+            HttpContext.Session.SetString("Token", token);
+
+            await HttpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme,
+                        userPrincipal,
+                        authProperties);
+
+            return RedirectToAction("Index", "Home");
+        }
 
         [HttpPost]
         public async Task<IActionResult> Logout()
@@ -69,7 +81,25 @@ namespace TTC_ShopSolution.AdminApp.Controllers
         }
 
 
-        
+        private ClaimsPrincipal ValidateToken(string jwtToken)
+        {
+            IdentityModelEventSource.ShowPII = true; // Install Microsoft.IdentityModel.Logging
+
+            // Install  Microsoft.IdentityModel.Tokens
+            SecurityToken validatedToken;
+            TokenValidationParameters validationParameters = new TokenValidationParameters(); 
+            
+
+            validationParameters.ValidateLifetime = true;
+
+            validationParameters.ValidAudience = _configuration["Tokens:Issuer"];
+            validationParameters.ValidIssuer = _configuration["Tokens:Issuer"];
+            validationParameters.IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Tokens:Key"]));
+
+            ClaimsPrincipal principal = new JwtSecurityTokenHandler().ValidateToken(jwtToken, validationParameters, out validatedToken);
+
+            return principal;
+        }
 
     }
 }

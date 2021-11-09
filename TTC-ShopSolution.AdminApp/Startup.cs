@@ -32,7 +32,7 @@ namespace TTC_ShopSolution.AdminApp
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
-                    options.LoginPath = "/Login/Index";
+                    options.LoginPath = "/User/Login/";
                     options.AccessDeniedPath = "/User/Forbidden/";
                 });
 
