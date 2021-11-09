@@ -10,8 +10,7 @@ using TTC_ShopSolution.AdminApp.Models;
 
 namespace TTC_ShopSolution.AdminApp.Controllers
 {
-    [Authorize]
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
 
