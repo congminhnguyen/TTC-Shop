@@ -162,9 +162,9 @@ namespace TTC_ShopSolution.Application.Catalog.Products
             //4. Select and projection
             var pagedResult = new PagedResult<ProductViewModel>()
             {
-                TotalRecord = totalRow,
-                //PageSize = request.PageSize, //cái này video sau
-                //PageIndex = request.PageIndex, //cái này video sau
+                TotalRecords = totalRow,
+                PageSize = request.PageSize, 
+                PageIndex = request.PageIndex,
                 Items = data
             };
             return pagedResult;
@@ -345,9 +345,9 @@ namespace TTC_ShopSolution.Application.Catalog.Products
             //4. Select and projection
             var pagedResult = new PagedResult<ProductViewModel>()
             {
-                TotalRecord = totalRow,
-                //PageSize = request.PageSize, //cái này video sau
-                //PageIndex = request.PageIndex, //cái này video sau
+                TotalRecords = totalRow,
+                PageSize = request.PageSize, 
+                PageIndex = request.PageIndex,
                 Items = data
             };
             return pagedResult;
