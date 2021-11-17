@@ -25,16 +25,16 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-5">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Login22</h3></div>
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Đăng nhập</h3></div>
                                 <div class="card-body">
                                     <form asp-action="Index" asp-controller="Login" method="post">
                                         <div asp-validation-summary="All" class="text-danger"></div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" asp-for="UserName" type="text" placeholder="Nhập tài khoản" />
-                                            <label>Tài khoản</label>
+                                            <input class="form-control" asp-for="UserName" type="text" placeholder="Tên tài khoản" />
+                                            <label>Tên tài khoản</label>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" asp-for="Password" type="password" placeholder="Password" />
+                                            <input class="form-control" asp-for="Password" type="password" placeholder="Mật khẩu" />
                                             <label>Mật khẩu</label>
                                         </div>
                                         <div class="form-check mb-3">
@@ -42,13 +42,13 @@
                                             <label class="form-check-label">Nhớ mật khẩu</label>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a class="small" href="/User/ForgotPassword">Quên mật khẩu?</a>
-                                            <button class="btn btn-primary" type="submit" href="index.html">Đăng nhập</button>
+                                            <button class="btn btn-success" type="submit" href="index.html">Đăng nhập</button>
+                                            <a class="small" href="/User/ForgotPassword">Quên mật khẩu thì bấm vào đây!</a>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="card-footer text-center py-3">
-                                    <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
+                                    <div class="small"><a href="register.html">Chưa có tài khoản à? Vậy thì đăng ký lẹ đi!</a></div>
                                 </div>
                             </div>
                         </div>
