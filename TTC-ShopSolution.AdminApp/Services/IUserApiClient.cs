@@ -2,12 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TTC_ShopSolution.ViewModels.Catalog.Common;
+using TTC_ShopSolution.ViewModels.Common;
 using TTC_ShopSolution.ViewModels.System.Users;
 
 namespace TTC_ShopSolution.AdminApp.Services
 {
     public interface IUserApiClient
     {
-        Task<string> Authenticate(LoginRequest request);
+        Task<ApiResult<string>> Authenticate(LoginRequest request);
+        Task<ApiResult<PagedResult<UserVm>>> GetUsersPagings(GetUserPagingRequest request);
+        Task<ApiResult<bool>> RegisterUser(RegisterRequest registerRequest);
+        Task<ApiResult<bool>> UpdateUser(Guid id, UserUpdateRequest request);
+        Task<ApiResult<UserVm>> GetById(Guid id);
+        Task<ApiResult<bool>> Delete(Guid id);
+
     }
 }

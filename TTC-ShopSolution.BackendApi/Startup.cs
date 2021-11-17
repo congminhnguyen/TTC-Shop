@@ -15,7 +15,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TTC_ShopSolution.Application.Catalog.Products;
-using TTC_ShopSolution.Application.Catalog.Products.Dtos;
 using TTC_ShopSolution.Application.Common;
 using TTC_ShopSolution.Application.System.Users;
 using TTC_ShopSolution.Data.EF;
@@ -43,8 +42,8 @@ namespace TTC_ShopSolution.BackendApi
                 .AddDefaultTokenProviders();
             //declare DI
             services.AddTransient<IStorageService, FileStorageService>();
-            services.AddTransient<IPublicProductService, PublicProductService>();
-            services.AddTransient<IManageProductService, ManageProductService>();
+
+            services.AddTransient<IProductService, ProductService>();
             services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
             services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
