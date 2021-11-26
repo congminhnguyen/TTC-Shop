@@ -16,6 +16,6 @@ namespace TTC_ShopSolution.AdminApp.Services
         Task<ApiResult<bool>> UpdateUser(Guid id, UserUpdateRequest request);
         Task<ApiResult<UserVm>> GetById(Guid id);
         Task<ApiResult<bool>> Delete(Guid id);
-
+        Task<ApiResult<bool>> RoleAssign(Guid id, RoleAssignRequest request);
     }
 }
