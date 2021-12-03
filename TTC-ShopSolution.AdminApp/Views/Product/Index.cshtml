@@ -1,8 +1,8 @@
 ﻿@using TTC_ShopSolution.ViewModels.Common;
-@model PagedResult<TTC_ShopSolution.ViewModels.System.Users.UserVm>
+@model PagedResult<TTC_ShopSolution.ViewModels.Catalog.Products.ProductVm>
 
 @{
-    ViewData["Title"] = "Danh sách người dùng";
+    ViewData["Title"] = "Danh sách sản phẩm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section Scripts{
@@ -12,31 +12,29 @@
         }, 2000);
     </script>
 }
-<div class="container-fluid px-4">
-    <h1 class="mt-4">Danh sách người dùng </h1>
+<div class="container-fluid">
+    <h1 class="mt-4">Danh sách sản phẩm</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-        <li class="breadcrumb-item active">Danh sách người dùng</li>
+        <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+        <li class="breadcrumb-item active">Danh sách sản phẩm</li>
     </ol>
-
     <div class="card mb-12">
         <div class="card-header">
             <div class="row">
                 <div class="col-md-6 col-xs-12">
-                    <a class="btn btn-success" asp-action="Create" asp-controller="User">Tạo mới</a>
+                    <a class="btn btn-success" asp-action="Create" asp-controller="Product">Tạo mới</a>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-xs-12">
                     <form asp-action="Index" method="get">
                         <div class="row">
                             <div class="col-md-9">
                                 <input type="text" value="@ViewBag.Keyword" name="keyword" class="form-control" />
                             </div>
-                            <div class="col-md-3">
+                            <div class="cold-md-3">
                                 <button type="submit" class="btn btn-primary">Tìm</button>
-                                <button type="button" onclick="window.location.href='/User/Index'" class="btn btn-danger">Reset</button>
+                                <button type="button" onclick="window.location.href='/Product/Index'" class="btn btn-dark">Reset</button>
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>
@@ -56,23 +54,21 @@
                     <thead>
                         <tr>
                             <th>
-                                Id
+                                Mã SP
                             </th>
                             <th>
                                 Tên
                             </th>
                             <th>
-                                Họ
+                                Giá nhập
                             </th>
                             <th>
-                                Số điện thoại
+                                Giá bán
                             </th>
                             <th>
-                                Tài khoản
+                                Số lượng tồn
                             </th>
-                            <th>
-                                Email
-                            </th>
+
                             <th></th>
                         </tr>
                     </thead>
@@ -84,25 +80,22 @@
                                     @Html.DisplayFor(modelItem => item.Id)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.FirstName)
+                                    @Html.DisplayFor(modelItem => item.Name)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.LastName)
+                                    @Html.DisplayFor(modelItem => item.OriginalPrice)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                    @Html.DisplayFor(modelItem => item.Price)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.UserName)
+                                    @Html.DisplayFor(modelItem => item.Stock)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Email)
-                                </td>
+
                                 <td>
                                     @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
                                     @Html.ActionLink("Xem", "Details", new { id = item.Id }) |
                                     @Html.ActionLink("Xóa", "Delete", new { id = item.Id }) |
-                                    @Html.ActionLink("Gán quyền", "RoleAssign", new { id = item.Id })
                                 </td>
                             </tr>
                         }
@@ -113,3 +106,4 @@
         </div>
     </div>
 </div>
+

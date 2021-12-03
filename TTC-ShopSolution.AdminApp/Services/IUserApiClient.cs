@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TTC_ShopSolution.ViewModels.Catalog.Common;
 using TTC_ShopSolution.ViewModels.Common;
 using TTC_ShopSolution.ViewModels.System.Users;
 

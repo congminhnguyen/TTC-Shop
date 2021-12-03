@@ -8,12 +8,12 @@ using TTC_ShopSolution.Data.Entities;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using TTC_ShopSolution.ViewModels.Catalog.Products;
-using TTC_ShopSolution.ViewModels.Catalog.Common;
 using Microsoft.AspNetCore.Http;
 using System.Net.Http.Headers;
 using System.IO;
 using TTC_ShopSolution.Application.Common;
 using TTC_ShopSolution.ViewModels.Catalog.ProductImages;
+using TTC_ShopSolution.ViewModels.Common;
 
 namespace TTC_ShopSolution.Application.Catalog.Products
 {
@@ -113,28 +113,26 @@ namespace TTC_ShopSolution.Application.Catalog.Products
         }
 
         /*----------------------------------- phần Get -----------------------------------*/
-        public Task<List<ProductViewModel>> GetAll()
+        public Task<List<ProductVm>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<PagedResult<ProductViewModel>> GetAllPaging(GetManageProductPagingRequest request)
+        public async Task<PagedResult<ProductVm>> GetAllPaging(GetManageProductPagingRequest request)
         {
             //1. Select join
             var query = from p in _context.Products
                         // không làm productTranSlations
                         join pic in _context.ProductInCategories on p.Id equals pic.ProductId
                         join c in _context.Categories on pic.CategoryId equals c.Id
+                        //where pt.LanguageId == request.LanguageId //ko làm language
                         select new { p, pic };
 
-            //join pic in _context.ProductInCategories on p.Id equals pic.ProductId
-            //            join c in _context.Categories on pic.CategoryId equals c.Id
-            //            select new { p, pic };
             //2. filter
             if (!string.IsNullOrEmpty(request.Keyword))
                 query = query.Where(x => x.p.Name.Contains(request.Keyword));
 
-            if (request.CategoryIds.Count > 0)
+            if (request.CategoryIds != null && request.CategoryIds.Count > 0)
             {
                 query = query.Where(p => request.CategoryIds.Contains(p.pic.CategoryId));
             }
@@ -144,8 +142,8 @@ namespace TTC_ShopSolution.Application.Catalog.Products
 
             var data = await query.Skip((request.PageIndex - 1) * request.PageSize)
                 .Take(request.PageSize)
-                .Select(x => new ProductViewModel()
-                {
+               .Select(x => new ProductVm()
+               {
                     Id = x.p.Id,
                     Name = x.p.Name,
                     DateCreated = (DateTime)x.p.DateCreated,
@@ -160,7 +158,7 @@ namespace TTC_ShopSolution.Application.Catalog.Products
 
 
             //4. Select and projection
-            var pagedResult = new PagedResult<ProductViewModel>()
+            var pagedResult = new PagedResult<ProductVm>()
             {
                 TotalRecords = totalRow,
                 PageSize = request.PageSize, 
@@ -170,13 +168,13 @@ namespace TTC_ShopSolution.Application.Catalog.Products
             return pagedResult;
         }
 
-        public async Task<ProductViewModel> GetById(int productId)
+        public async Task<ProductVm> GetById(int productId)
         {
             var product = await _context.Products.FindAsync(productId);
             //var productTranslation = await _context.ProductTranslations.FirstOrDefaultAsync(x => x.ProductId == productId
             //&& x.LanguageId == languageId);
 
-            var productViewModel = new ProductViewModel()
+            var productViewModel = new ProductVm()
             {
                 Id = product.Id,
                 DateCreated = (DateTime)product.DateCreated,
@@ -304,7 +302,7 @@ namespace TTC_ShopSolution.Application.Catalog.Products
             return fileName;
         }
 
-        public async Task<PagedResult<ProductViewModel>> GetAllByCategoryId(GetPublicProductPagingRequest request)
+        public async Task<PagedResult<ProductVm>> GetAllByCategoryId(GetPublicProductPagingRequest request)
         {
             //1. Select join
             var query = from p in _context.Products
@@ -327,8 +325,8 @@ namespace TTC_ShopSolution.Application.Catalog.Products
 
             var data = await query.Skip((request.PageIndex - 1) * request.PageSize)
                 .Take(request.PageSize)
-                .Select(x => new ProductViewModel()
-                {
+      .Select(x => new ProductVm()
+      {
                     Id = x.p.Id,
                     Name = x.p.Name,
                     DateCreated = (DateTime)x.p.DateCreated,
@@ -343,7 +341,7 @@ namespace TTC_ShopSolution.Application.Catalog.Products
 
 
             //4. Select and projection
-            var pagedResult = new PagedResult<ProductViewModel>()
+            var pagedResult = new PagedResult<ProductVm>()
             {
                 TotalRecords = totalRow,
                 PageSize = request.PageSize, 

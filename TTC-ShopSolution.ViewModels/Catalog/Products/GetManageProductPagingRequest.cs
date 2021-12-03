@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using TTC_ShopSolution.ViewModels.Catalog.Common;
+using TTC_ShopSolution.ViewModels.Common;
 
 namespace TTC_ShopSolution.ViewModels.Catalog.Products
 {
@@ -10,5 +10,7 @@ namespace TTC_ShopSolution.ViewModels.Catalog.Products
         public string Keyword { get; set; }
 
         public List<int> CategoryIds { get; set; }
+
+        //public string LanguageId { get; set; } //không làm language
     }
 }
