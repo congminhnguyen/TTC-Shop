@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\eShopSolution.Utilities\eShopSolution.Utilities.csproj" />
     <ProjectReference Include="..\TTC-ShopSolution.ViewModels\TTC-ShopSolution.ViewModels.csproj" />
   </ItemGroup>
 

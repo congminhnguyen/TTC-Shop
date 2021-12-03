@@ -1,6 +1,7 @@
 using eShopSolution.Utilities.Constants;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -9,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
@@ -16,6 +18,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TTC_ShopSolution.Application.Catalog.Products;
 using TTC_ShopSolution.Application.Common;
+using TTC_ShopSolution.Application.System.Languages;
 using TTC_ShopSolution.Application.System.Roles;
 using TTC_ShopSolution.Application.System.Users;
 using TTC_ShopSolution.Data.EF;
@@ -37,7 +40,7 @@ namespace TTC_ShopSolution.BackendApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TTC_ShopDBContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString(SystemConstant.MainConnectionString)));
+                options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.MainConnectionString)));
             services.AddIdentity<AppUser, AppRole>()
                 .AddEntityFrameworkStores<TTC_ShopDBContext>()
                 .AddDefaultTokenProviders();
@@ -48,8 +51,9 @@ namespace TTC_ShopSolution.BackendApi
             services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
             services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
-            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ILanguageService, LanguageService>();
             services.AddTransient<IRoleService, RoleService>();
+            services.AddTransient<IUserService, UserService>();
 
             //services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
             //services.AddTransient<IValidator<RegisterRequest>, RegisterRequestValidator>();
@@ -88,6 +92,31 @@ namespace TTC_ShopSolution.BackendApi
                         new List<string>()
                       }
                     });
+            });
+
+            string issuer = Configuration.GetValue<string>("Tokens:Issuer");
+            string signingKey = Configuration.GetValue<string>("Tokens:Key");
+            byte[] signingKeyBytes = System.Text.Encoding.UTF8.GetBytes(signingKey);
+            services.AddAuthentication(opt =>
+            {
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = issuer,
+                    ValidateAudience = true,
+                    ValidAudience = issuer,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ClockSkew = System.TimeSpan.Zero,
+                    IssuerSigningKey = new SymmetricSecurityKey(signingKeyBytes)
+                };
             });
         }
 
