@@ -28,14 +28,13 @@ namespace TTC_ShopSolution.BackendApi.Controllers
         //http://localhost:port/products?pageIndex=1&pageSizze=10&CategoryId=
         //http://localhost:port/product/public-paging
         //[HttpGet("public-paging/{languageId}")]
-        [HttpGet("public-paging")]
-        public async Task<IActionResult> GetAllPaging([FromQuery] GetPublicProductPagingRequest request)
+        [HttpGet("paging")]
+        public async Task<IActionResult> GetAllPaging([FromQuery] GetManageProductPagingRequest request)
         {
-            var products = await _productService.GetAllByCategoryId(request);
+            var products = await _productService.GetAllPaging(request);
             return Ok(products);
         }
 
-        //http://localhost:port/product/1
         //[HttpGet("{id}/{languageId}")]
         [HttpGet("{productId}")]
         public async Task<IActionResult> GetById(int productId)

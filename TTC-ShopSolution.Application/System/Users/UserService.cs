@@ -11,7 +11,6 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using TTC_ShopSolution.Data.Entities;
-using TTC_ShopSolution.ViewModels.Catalog.Common;
 using TTC_ShopSolution.ViewModels.Common;
 using TTC_ShopSolution.ViewModels.System.Users;
 

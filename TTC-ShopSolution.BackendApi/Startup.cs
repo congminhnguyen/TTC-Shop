@@ -37,7 +37,7 @@ namespace TTC_ShopSolution.BackendApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TTC_ShopDBContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString(SystemConstant.MainConnectionString)));
+                options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.MainConnectionString)));
             services.AddIdentity<AppUser, AppRole>()
                 .AddEntityFrameworkStores<TTC_ShopDBContext>()
                 .AddDefaultTokenProviders();
