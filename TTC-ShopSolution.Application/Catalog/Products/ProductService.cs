@@ -304,7 +304,7 @@ namespace TTC_ShopSolution.Application.Catalog.Products
             return fileName;
         }
 
-        public async Task<PagedResult<ProductVm>> GetAllByCategoryId(string languageId, GetPublicProductPagingRequest request)
+        public async Task<PagedResult<ProductVm>> GetAllByCategoryId(GetPublicProductPagingRequest request)
         {
             //1. Select join
             var query = from p in _context.Products

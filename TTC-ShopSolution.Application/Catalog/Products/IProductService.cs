@@ -29,7 +29,7 @@ namespace TTC_ShopSolution.Application.Catalog.Products
         Task<ProductImageViewModel> GetImageById(int imageId);
         Task<List<ProductImageViewModel>> GetListImage(int productId);
 
-        Task<PagedResult<ProductVm>> GetAllByCategoryId(string languageId, GetPublicProductPagingRequest request);
+        Task<PagedResult<ProductVm>> GetAllByCategoryId(GetPublicProductPagingRequest request);
 
 
     }
