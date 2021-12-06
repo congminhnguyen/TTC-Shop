@@ -16,6 +16,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TTC_ShopSolution.Application.Catalog.Products;
 using TTC_ShopSolution.Application.Common;
+using TTC_ShopSolution.Application.System.Roles;
 using TTC_ShopSolution.Application.System.Users;
 using TTC_ShopSolution.Data.EF;
 using TTC_ShopSolution.Data.Entities;
@@ -36,7 +37,7 @@ namespace TTC_ShopSolution.BackendApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TTC_ShopDBContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString(SystemConstant.MainConnectionString)));
+                options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.MainConnectionString)));
             services.AddIdentity<AppUser, AppRole>()
                 .AddEntityFrameworkStores<TTC_ShopDBContext>()
                 .AddDefaultTokenProviders();
@@ -48,6 +49,7 @@ namespace TTC_ShopSolution.BackendApi
             services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
             services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IRoleService, RoleService>();
 
             //services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
             //services.AddTransient<IValidator<RegisterRequest>, RegisterRequestValidator>();
