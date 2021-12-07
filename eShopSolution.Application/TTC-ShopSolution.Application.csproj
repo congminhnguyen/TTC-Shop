@@ -14,9 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\eShopSolution.Data\eShopSolution.Data.csproj" />
-    <ProjectReference Include="..\eShopSolution.Utilities\eShopSolution.Utilities.csproj" />
-    <ProjectReference Include="..\eShopSolution.ViewModels\eShopSolution.ViewModels.csproj" />
+    <ProjectReference Include="..\eShopSolution.Data\TTC-ShopSolution.Data.csproj" />
+    <ProjectReference Include="..\eShopSolution.Utilities\TTC-ShopSolution.Utilities.csproj" />
+    <ProjectReference Include="..\eShopSolution.ViewModels\TTC-ShopSolution.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
