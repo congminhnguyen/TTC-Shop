@@ -14,7 +14,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TTC-ShopSolution.Data", "eS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TTC-ShopSolution.Application", "eShopSolution.Application\TTC-ShopSolution.Application.csproj", "{8AD9F075-7034-464D-B0B3-54C41C94F4E4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TTC-ShopSolution.Utilities", "eShopSolution.Utilities\TTC-ShopSolution.Utilities.csproj", "{7B78475E-F465-4FF8-B364-D0F04F863F9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopSolution.Utilities", "eShopSolution.Utilities\eShopSolution.Utilities.csproj", "{7B78475E-F465-4FF8-B364-D0F04F863F9A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TTC-ShopSolution.ViewModels", "eShopSolution.ViewModels\TTC-ShopSolution.ViewModels.csproj", "{076CAFEE-FD86-4A3F-BF81-6FED98D465D5}"
 EndProject
