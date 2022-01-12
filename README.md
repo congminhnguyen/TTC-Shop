@@ -1,32 +1,46 @@
-# ASP.NET Core 3.1 project from TEDU
-## Technologies
-- ASP.NET Core 3.1
-- Entity Framework Core 3.1
-## Install Tools
-- .NET Core SDK 3.1
-- Git client
-- Visual Studio 2019
-- SQL Server 2019
-## Youtube tutorial
-- Video list: https://www.youtube.com/playlist?list=PLRhlTlpDUWsyN_FiVQrDWMtHix_E2A_UD
-- TEDU Course: https://tedu.com.vn/khoa-hoc/lam-du-an-voi-aspnet-core-31-34.html
-## How to configure and run
-- Clone code from Github: git clone https://github.com/teduinternational/eShopSolution
-- Open solution eShopSolution.sln in Visual Studio 2019
-- Set startup project is eShopSolution.Data
-- Change connection string in Appsetting.json in eShopSolution.Data project
-- Open Tools --> Nuget Package Manager -->  Package Manager Console in Visual Studio
-- Run Update-database and Enter.
-- After migrate database successful, set Startup Project is eShopSolution.WebApp
-- Change database connection in appsettings.Development.json in eShopSolution.WebApp project.
-- Choose profile to run or press F5
-## How to contribute
-- Fork and create your branch
-- Create Pull request to us.
-
-## Admin template: https://startbootstrap.com/templates/sb-admin/
-## Portal template: https://www.free-css.com/free-css-templates/page194/bootstrap-shop
-
-## I18N (Internalization)
-- References: https://medium.com/swlh/step-by-step-tutorial-to-build-multi-cultural-asp-net-core-web-app-3fac9a960c43
-- Source code: https://github.com/LazZiya/ExpressLocalizationSampleCore3
+# Lập trình web nâng cao K18
+## Website Bán Hàng
+## Thành viên
+- Nguyễn Minh Công: Nhóm trưởng.
+- Trần Phú Thiên: Thư ký.
+- Vũ Minh Tân: Giám sát.
+### Công nghệ
+* ASP.NET Core 3.1
+* Entity Framework Core 3.1.18
+* Visual Studio 2019
+* SQL Server 2019
+### Mô hình
+* N layer (Data, Business, Presentation): Data driven design
+* Code first sử dụng Entity
+### Install NuGet Packages to TTC-ShopSolution.Data
+* Microsoft.EntityFrameworkCore v3.1.18
+* Microsoft.EntityFrameworkCore.SqlServer v3.1.18
+* Microsoft.EntityFrameworkCore.Design v3.1.18
+* Microsoft.EntityFrameworkCore.Tools v3.1.18
+* Microsoft.Extensions.Configuration.FileExtensions v3.1.18
+* Microsoft.Extensions.Configuration.Json v3.1.18
+* Microsoft.AspNetCore.Identity.EntityFrameworkCore v3.1.18
+### Install NuGet Packages to TTC-ShopSolution.BackendApi
+* FluentValidation.AspNetCore v8.6.2
+### Install NuGet Packages to TTC-ShopSolution.ViewModels
+* FluentValidation.AspNetCore v8.6.2
+### Note
+* Thiết kế database
+* Tạo các Entity Class
+* Cấu hình Entity với Fluent API
+* Migration database
+* Update-database
+* Thêm bảng cho ASP.NET Core Identity (Add ASP.NET Identity tables)
+* Dựng cấu trúc tầng Application Service (Create application service layer structure)
+* Tạo phương thức search và phân trang (Create search and paging method)
+* Phương thức cập nhật sản phẩm (Update product method)
+* Thêm bảng hình ảnh sản phẩm (Add product image table by migration)
+* Phương thức quản lý ảnh (Manage image method API)
+* Tạo Web API Project (Create Web API Project)
+* Thêm Swagger cho Web API (Add Swagger to Web API)
+* Tạo RESTful API cho Product (Create RESTful API for Product)
+* API Quản lý ảnh (Image management API)
+* Tạo API đăng nhập và đăng ký (Create login and register APIs)
+* Thêm Authorization header cho Swagger (Add Authorization to Swagger)
+* Sử dụng Fluent Validation
+* Tạo ứng dụng Admin và thêm Template (Create Admin App and add Template)
